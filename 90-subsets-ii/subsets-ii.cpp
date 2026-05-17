@@ -1,41 +1,31 @@
 class Solution {
-public:
-    void solve(vector<int> ip , vector<int> op , vector<vector<int>> &vec){
+    void solve(vector<vector<int>>&ans , vector<int> ip , vector<int> op){
         if(ip.size() == 0){
-            vec.push_back(op);
-            return ;
+            ans.push_back(op);
+            return;
         }
 
-        vector<int> op1 = op;
-        vector<int> op2 = op;
+        vector<int>op1 = op;
+        vector<int>op2 = op;
 
-        op2.push_back(ip[0]);
+        op1.push_back(ip[0]);
         ip.erase(ip.begin());
 
-        solve(ip,op1,vec);
-        solve(ip,op2,vec);
+        solve(ans,ip,op1);
+        solve(ans,ip,op2);
     }
-
-
+public:
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
-        vector<vector<int>> vec;
-        vector<int> op;
+        vector<vector<int>>ans;
+        vector<int>op;
         sort(nums.begin(),nums.end());
-        solve(nums,op,vec);
+        solve(ans,nums,op);
 
-        map<vector<int> , int> mapp;
-        int n = vec.size();
+        sort(ans.begin(),ans.end());
 
-        for(int i = 0 ; i < n ; i++){
-            mapp[vec[i]]++;
-        }
+        set<vector<int>>st(ans.begin(),ans.end());
 
-        vector<vector<int>> ans;
-
-        for(auto it = mapp.begin() ; it != mapp.end() ; it++){
-            ans.push_back( it -> first);
-        }        
-
-        return ans;
+        vector<vector<int>>res(st.begin(),st.end());
+        return res;
     }
 };
