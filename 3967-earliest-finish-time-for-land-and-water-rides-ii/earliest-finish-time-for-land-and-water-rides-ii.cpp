@@ -23,5 +23,9 @@ public:
         int waterFirst = solve(waterStartTime,waterDuration,landStartTime,landDuration);
 
         return min(landFirst,waterFirst);
+
     }
 };
+
+// figure out the least time takes to complete a ride either land or water , and from that least time
+// calculate the best or minium possible for the next ride
