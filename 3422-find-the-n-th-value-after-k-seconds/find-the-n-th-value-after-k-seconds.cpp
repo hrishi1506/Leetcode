@@ -1,7 +1,7 @@
 class Solution {
 public:
     int valueAfterKSeconds(int n, int k) {
-        vector<long long> pref(n,1);
+        vector<int> pref(n,1);
         long long mod = 1000000007;
 
         while(k--){
