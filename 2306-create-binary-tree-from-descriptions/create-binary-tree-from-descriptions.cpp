@@ -47,6 +47,6 @@ public:
             }
         }
 
-        return NULL; // we'll never reach here niggerrr
+        return NULL; // we'll never reach here niggerrr as they said unique values are given
     }
 };
