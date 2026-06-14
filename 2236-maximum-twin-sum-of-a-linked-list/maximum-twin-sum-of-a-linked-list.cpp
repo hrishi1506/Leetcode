@@ -9,17 +9,21 @@
  * };
  */
 class Solution {
-    ListNode* reverse(ListNode* head){
-        if(head == NULL || head -> next == NULL){
-            return head;
-        } 
-        ListNode* last = reverse(head->next);
+    ListNode* reverse(ListNode* head) {
+    ListNode* prev = NULL;
+    ListNode* curr = head;
 
-        head -> next -> next = head;
-        head -> next = NULL;
+    while (curr != NULL) {
+        ListNode* front = curr->next; 
 
-        return last;
+        curr->next = prev;            
+
+        prev = curr;                 
+        curr = front;                
     }
+
+    return prev;
+}
 public:
     int pairSum(ListNode* head) {
         if(head == NULL) return 0;
