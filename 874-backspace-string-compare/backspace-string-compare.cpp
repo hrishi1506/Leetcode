@@ -9,8 +9,7 @@ public:
             if(st1.size() > 0 && ch == '#'){
                 st1.pop();
             }
-            if(ch == '#') continue;
-            else{
+            else if(ch != '#'){
                 st1.push(ch);
             }
         }
@@ -18,8 +17,8 @@ public:
             if(st2.size() > 0 && ch == '#'){
                 st2.pop();
             }
-            if(ch == '#') continue;
-            else{
+            
+            else if(ch != '#'){
                 st2.push(ch);
             }
         }
