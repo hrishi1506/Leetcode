@@ -9,16 +9,50 @@
  * };
  */
 class Solution {
+    ListNode* solve(ListNode* head){
+        if(head == NULL || head->next == NULL){
+            return head;
+        }
+
+        ListNode* newHead = solve(head->next);
+
+        head->next->next = head;
+        head->next = NULL;
+
+        return newHead;
+    }
 public:
     bool isPalindrome(ListNode* head) {
-        vector<int>arr;
-        ListNode* temp = head;
-        while(temp != NULL){
-            arr.push_back(temp->val);
-            temp = temp->next;
+        if(head == NULL || head->next == NULL) return true;
+
+        ListNode* fast = head;
+        ListNode* slow = head;
+        ListNode* prev = NULL;
+
+        while(fast != NULL && fast->next != NULL){
+            prev = slow;
+            fast = fast->next->next;
+            slow = slow->next;
         }
-        vector<int>arr2 = arr;
-        reverse(arr.begin(),arr.end());
-        return arr==arr2;
+
+        if(fast != NULL) {
+            slow = slow->next;
+        }
+
+        slow = solve(slow);
+        prev->next = slow;
+
+        ListNode* curr = head;
+
+        while(slow != NULL){
+            if(curr->val != slow->val){
+                return false;
+            }
+            slow = slow->next;
+            curr = curr->next;
+        }
+
+        return true;
+
     }
 };
