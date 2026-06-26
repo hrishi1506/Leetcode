@@ -14,12 +14,15 @@ public:
 
         for (int i = 1; i < n; i++) {
             pref[i] = pref[i - 1] + nums[i];
+
         }
 
         int shift = n;
         vector<int> freq(2 * n + 1, 0);
 
+
         freq[shift] = 1;
+
 
         long long valid = 0;
         int lastSum = 0;
@@ -27,14 +30,19 @@ public:
         for (int i = 0; i < n; i++) {
             if (pref[i] > lastSum) {
                 valid += freq[lastSum + shift];
+
             } else {
+
                 valid -= freq[pref[i] + shift];
+            
             }
 
             cnt += valid;
             freq[pref[i] + shift]++;
             lastSum = pref[i];
+
         }
+
 
         return cnt;
     }
