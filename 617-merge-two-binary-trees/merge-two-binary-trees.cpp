@@ -10,31 +10,16 @@
  * };
  */
 class Solution {
-    void solve(TreeNode* root1 , TreeNode*root2){
-        if(root1 == NULL || root2 == NULL){
-            return;
-        }
-
-        root1->val = root1->val + root2->val;
-
-         if (root1->left == NULL)
-             root1->left = root2->left;
-        else
-            solve(root1->left, root2->left);
-
-        if (root1->right == NULL)
-            root1->right = root2->right;
-        else
-            solve(root1->right, root2->right);
-
-    }
+    
 public:
     TreeNode* mergeTrees(TreeNode* root1, TreeNode* root2) {
-        if(root1 == NULL) return root2;
-        if(root2 == NULL) return root1;
+    if (!root1) return root2;
+    if (!root2) return root1;
 
-        solve(root1,root2);
+    root1->val += root2->val;
+    root1->left = mergeTrees(root1->left, root2->left);
+    root1->right = mergeTrees(root1->right, root2->right);
 
-        return root1;
-    }
+    return root1;
+   }
 };
