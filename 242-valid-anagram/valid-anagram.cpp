@@ -1,13 +1,22 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        unordered_map<char,int>mapp;
-        for(char &x : s) mapp[x]++;
-        for(char &x : t) mapp[x]--;
 
-        for(auto &it : mapp){
-            if(it.second != 0) return false;
+        if(s.size() != t.size()) return false;
 
+        vector<int>freq(27,0);
+
+        for(int i = 0 ; i < s.size() ; i++){
+            int idx = s[i] - 'a';
+            freq[idx]++;
+        }
+        for(int i = 0 ; i < s.size() ; i++){
+            int idx = t[i] - 'a';
+            freq[idx]--;
+        }
+
+        for(int x : freq){
+            if(x != 0) return false;
         }
         return true;
     }
