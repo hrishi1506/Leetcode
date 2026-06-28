@@ -1,27 +1,19 @@
 class Solution {
 public:
     long long maxSum(vector<int>& nums, int k, int mul) {
-        long sum = 1;
+        long sum = 0;
         sort(nums.begin(),nums.end() , greater<int>());
-        int cnt = min(k,mul-1);
 
-        k = k-cnt;
-        int i =0;
+        for(int i =0 ;  i < k ; i++){
+            if(mul <= 0){
+                mul = 1;
+            }
 
-        while(cnt--){
-            sum += (1LL* nums[i]*mul);
-                mul--;
-                i++;
+            sum += 1LL * nums[i]*mul;
+            mul--;
         }
 
-        while(k > 0){
-            sum += nums[i];
-            i++;
-            k--;
-        }
-
-        return sum-1;
-
+        return sum;
 
     }
 };
