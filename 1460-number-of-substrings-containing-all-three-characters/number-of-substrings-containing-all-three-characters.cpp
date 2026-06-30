@@ -1,17 +1,37 @@
 class Solution {
 public:
     int numberOfSubstrings(string s) {
-        int cnt = 0;
-        int lastSeen [3] = {-1,-1,-1};
+        unordered_map<char,int>mapp;
+
+        int cnt=0;
+
+        int j = 0 , i = 0;
         int n = s.size();
 
-        for(int i = 0 ; i < n ; i++){
-            lastSeen[s[i] - 'a'] = i;
 
-            if(lastSeen[0] != -1 &&  lastSeen[1] != -1 && lastSeen[2] != -1){
-                cnt += 1 + min({lastSeen[0] , lastSeen[1] , lastSeen[2]});
+        while( j < n){
+            mapp[s[j]]++;
+
+            if(mapp.size() == 3){          //agar ithna part valid hoga tho uske baad kuch be valid hogaa!!
+              while(mapp.size() == 3)
+               { 
+                cnt += (n-j); 
+                
+                mapp[s[i]]--;
+
+                if(mapp[s[i]] == 0){
+                    mapp.erase(s[i]);
+                }
+                i++;
+                
+                }
             }
+            
+
+            j++;
+
         }
+
         return cnt;
     }
 };
