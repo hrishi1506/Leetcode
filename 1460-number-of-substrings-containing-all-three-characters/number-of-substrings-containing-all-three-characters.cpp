@@ -1,35 +1,24 @@
 class Solution {
 public:
     int numberOfSubstrings(string s) {
-        unordered_map<char,int>mapp;
-
-        int cnt=0;
-
-        int j = 0 , i = 0;
         int n = s.size();
+        int cnt = 0;
+
+        vector<int>mapp (3,0) ;
+        int j = 0 , i = 0;
 
 
-        while( j < n){
-            mapp[s[j]]++;
+        while(j < n){
+            mapp[s[j] - 'a']++;
 
-            if(mapp.size() == 3){          //agar ithna part valid hoga tho uske baad kuch be valid hogaa!!
-              while(mapp.size() == 3)
-               { 
-                cnt += (n-j); 
-                
-                mapp[s[i]]--;
+            while(mapp[0] >0 && mapp[1] > 0 && mapp[2] > 0){
+                cnt += n-j;
 
-                if(mapp[s[i]] == 0){
-                    mapp.erase(s[i]);
-                }
+                mapp[s[i] - 'a']--;
                 i++;
-                
-                }
             }
-            
 
             j++;
-
         }
 
         return cnt;
