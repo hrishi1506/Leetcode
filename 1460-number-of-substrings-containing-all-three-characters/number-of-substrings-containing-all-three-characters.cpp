@@ -12,8 +12,8 @@ public:
             mapp[s[j] - 'a']++;
 
             while(mapp[0] >0 && mapp[1] > 0 && mapp[2] > 0){
-                cnt += n-j;
-
+                cnt += n-j;      //ikkadivaraku valid ayethee dani tarvatha kuda valid eyy
+ 
                 mapp[s[i] - 'a']--;
                 i++;
             }
