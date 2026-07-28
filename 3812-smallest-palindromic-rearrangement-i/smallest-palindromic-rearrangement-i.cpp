@@ -9,11 +9,12 @@ public:
         string left = "";
         string mid = "" ;
         for(int i = 0 ; i < 26 ; i++){
-            int p = freq[i]/2;
-            while(p != 0){
-                left.push_back(i + 'a');
-                p--;
-            }
+            // int p = freq[i]/2;
+            // while(p != 0){
+            //     left.push_back(i + 'a');
+            //     p--;
+            // }
+            left += string(freq[i]/2 , i+'a');
 
             if(freq[i] % 2)
                 mid = i+'a';
