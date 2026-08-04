@@ -1,20 +1,17 @@
 class Solution {
 public:
     vector<int> findMissingElements(vector<int>& nums) {
-        vector<int>ans;
+        vector<int> ans ;
         int n = nums.size();
-        int maxi = *max_element(nums.begin(),nums.end());
-        int mini = *min_element(nums.begin(),nums.end());
-
-        set<int>st(nums.begin(),nums.end());
-
-        for(int i = mini+1 ; i < maxi ; i++){
-            if(st.count(i) == 0){
-                ans.push_back(i);
+        sort(nums.begin(),nums.end());
+        for(int i=0;i<n-1;i++){
+            if(nums[i+1]-nums[i] == 1) continue ;
+            int j = nums[i] +1 ;
+            while( j != nums[i+1]){
+                ans.push_back(j);
+                j++;
             }
         }
-
-        sort(ans.begin(),ans.end());
         return ans;
     }
 };
