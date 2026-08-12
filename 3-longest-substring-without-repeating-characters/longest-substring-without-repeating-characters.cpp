@@ -11,7 +11,7 @@ public:
             if(mapp.size() == j-i+1){
                 maxi = max(maxi,j-i+1);
             }
-            else if(mapp.size() < j-i+1){
+    
                 while(mapp.size() < j-i+1){
                     mapp[s[i]]--;
                     if(mapp[s[i]] == 0){
@@ -19,7 +19,7 @@ public:
                     }
                     i++;
                 }
-            }
+            
             j++;
         }
         return maxi;
