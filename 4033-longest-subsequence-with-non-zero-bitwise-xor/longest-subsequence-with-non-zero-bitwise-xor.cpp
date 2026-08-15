@@ -11,7 +11,6 @@ public:
                 hasZero = true;
         }
         if(!hasZero) return 0;
-        if(k == 0) return n-1;
-        return n;
-    }
+        return (k == 0) ?  n-1 :  n;
+     }
 };
