@@ -26,7 +26,7 @@ public:
         
         int d = sqrt((xi - xCenter) * (xi - xCenter) + (yi - yCenter)*(yi - yCenter));
 
-        // now if the distance is less than the circle radiun then ofcc its overlapping piece of shit
+        // now if the distance is less than the circle radiun then ofcc its overlapping piece of shitt
 
         return  d <= radius;
 
