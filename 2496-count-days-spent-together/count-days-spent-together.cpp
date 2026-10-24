@@ -22,9 +22,7 @@ public:
         int end = min(aEnd , bEnd);
 
 
-        if(st > end) return 0;
-
-        return end-st+1;
+        return st > end ? 0 : end-st+1;
 
     }
 };
