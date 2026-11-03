@@ -1,18 +1,22 @@
 class Solution {
-    int solve(int a , int b){
-        string str1 = to_string(a);
-        string str2 = to_string(b);
-
-        return stoi(str2+str1);
-    }
 public:
-    int minMergedInteger(vector<int>& nums) {
-        int ans = INT_MAX;
-
-        for(int i = 1 ; i < nums.size() ; i+=2){
-            int s = solve(nums[i],nums[i-1]);
-            ans = min(ans,s);
+     int solve(int n){
+        int ans=1;
+        while(n>0){
+            ans*=10;
+            n=n/10;
         }
+        return ans;
+     }
+    int minMergedInteger(vector<int>& nums) {
+         int ans=1e9;
+        int n=nums.size();
+        for(int i=0; i<n; i+=2){
+            int val=nums[i]*solve(nums[i+1])+nums[i+1];
+            
+            ans=min(ans,val);
+        }
+        
         return ans;
     }
 };
