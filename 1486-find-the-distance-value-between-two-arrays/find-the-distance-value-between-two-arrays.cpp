@@ -6,8 +6,11 @@ public:
         for(int i = 0 ; i < arr1.size() ; i++){
             bool flag = false;
             for(int j = 0 ; j < arr2.size() ; j++){
-                if(abs(arr1[i] - arr2[j]) <= d)
+                if(abs(arr1[i] - arr2[j]) <= d){
                     flag = true;
+                    break;
+                }
+                    
                 
                 if(flag == false && j == arr2.size()-1)
                     c++;
